@@ -34,17 +34,17 @@ int _printf(const char *format, ...)
 {
 	unsigned int i = 0;
 	unsigned int count = 0;
-	va_list list;
+	va_list list; /* se declara para acceder a los argumentos sin nombre */
 
-	if (!format)
+	if (!format) /*si no es ninguno de los formatos retorna -1 (error)*/
 	{
 		return (-1);
 	}
 
-	va_start(list, format);
-	for (i = 0; format[i] != '\0'; i++)
+	va_start(list, format); /*utilizamos la macro va_start para inicializar la variable list*/
+	for (i = 0; format[i] != '\0'; i++) /*recorremos los datos de la estructura*/
 	{
-		if (format[i] == '%')
+		if (format[i] == '%') /* si formato tiene el porcentaje ejecuta lo siguiente: */
 		{
 			if (format[i + 1] == '\0')
 			{
@@ -58,16 +58,16 @@ int _printf(const char *format, ...)
 			}
 			else if (get_type_func(format[i + 1]) != NULL)
 			{
-				count += (get_type_func(format[i + 1]))(list);
+				count += (get_type_func(format[i + 1]))(list); /* si encuentra el caracter dentro de list llama a la funcion*/
 				i++;
 			}
 			else
 			{
-				_putchar(format[i]);
+				_putchar(format[i]); /* imprime el caracter dado y sigue buscando*/
 				count++;
 			}
 		}
-		else
+		else /* de lo contrario solo impriminos el caracter introducido */
 		{
 			_putchar(format[i]);
 			count++;
