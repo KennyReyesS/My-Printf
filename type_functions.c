@@ -1,7 +1,4 @@
 #include "holberton.h"
-#include <stdarg.h>
-#include <stdio.h>
-#include <stdlib.h>
 
 /**
  *print_char - prints char.
