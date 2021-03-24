@@ -3,12 +3,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int print_char(va_list l)
+/**
+ *print_char - prints char.
+ *@c: argument to print
+ *Return: 0 if the function is correct.
+ */
+
+int print_char(va_list c)
 {
-	char ch = (char)va_arg(l, int);
+	char ch = (char)va_arg(c, int); /* va_arg devuelve el argumento actual */
 
 	_putchar(ch);
-	return (1);
+	return (0);
 }
 
 int print_str(va_list s)
@@ -35,7 +41,7 @@ int print_dec(va_list n)
 	int base;
 	int count = 0;
 
-	num = va_arg(n, int);
+	num = va_arg(n, int); /*Guarda el argumento actual en num*/
 
 	if (num < 0)
 	{
@@ -91,7 +97,7 @@ int print_rev(va_list r)
 		i++;
 		count++;
 	}
-	i--;
+	i--; /* la cadena recorre en reversa */
 
 	while (i >= 0)
 	{
